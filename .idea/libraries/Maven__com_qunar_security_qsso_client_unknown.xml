@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.qunar.security:qsso-client:unknown">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/qunar/security/qsso-client/unknown/qsso-client-unknown.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/qunar/security/qsso-client/unknown/qsso-client-unknown-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/qunar/security/qsso-client/unknown/qsso-client-unknown-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
