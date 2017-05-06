@@ -5,15 +5,47 @@ package com.cumt.cs.trajectory.model.common;
  */
 public class TrajPoint {
     // 所在轨迹的标号
-    int id;
+    private int id;
     // 经纬度 除以10W后为实际值
-    int lng = 0;
-    int lat = 0;
+    private int lng = 0;
+    private int lat = 0;
     // 时间
     int time;
 
-    TrajPoint(int _lng, int _lat) {
+    public TrajPoint(int _lng, int _lat) {
         lng = _lng;
         lat = _lat;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getLng() {
+        return lng;
+    }
+
+    public void setLng(int lng) {
+        this.lng = lng;
+    }
+
+    public int getLat() {
+        return lat;
+    }
+
+    public void setLat(int lat) {
+        this.lat = lat;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
     }
 }

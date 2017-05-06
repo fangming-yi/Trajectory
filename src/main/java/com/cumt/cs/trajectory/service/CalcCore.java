@@ -26,7 +26,7 @@ public interface CalcCore {
     // 计算最近点对
     Pair<Integer, Integer> closestPoints(Vector<TrajPoint> a, Vector<TrajPoint> b);
     // 查询相似轨迹
-    Queue<QueryResult> findSimilar(Vector<TrajPoint> target,int qn);
+    Queue<QueryResult> findSimilar(Vector<TrajPoint> target,TrajectoryManager trajManager, KDTree kdTree,int qn);
     // 获得经纬度极值
     int getMinLng(Vector<TrajPoint> a,Vector<TrajPoint> b);
     int getMaxLng(Vector<TrajPoint> a,Vector<TrajPoint> b);
@@ -37,13 +37,18 @@ public interface CalcCore {
     int getMaxTime(Vector<TrajPoint> a,Vector<TrajPoint> b);
 
 
-
-
+    /*// 辅助计算函数
+    // 计算两点距离
     double ppDistance(TrajPoint p1, TrajPoint p2);
+    // 计算方向角
     double directAngle(TrajPoint a, TrajPoint b, TrajPoint c);
+    // 计算向量点乘
     double dot(TrajPoint p1,TrajPoint p2);
+    //计算关键点
     void keyPoint(Vector<TrajPoint> a, Vector<Integer> vec);
+    //轨迹拷贝
     void copy(Vector<TrajPoint> a,int start,int end, Vector<TrajPoint> traj);
+    // 网格划分
     void partition(Vector<TrajPoint> a, Vector<TrajPoint> b);
     // 相似度计算函数
     double lcss(Vector<TrajPoint> a, Vector<TrajPoint> b);
@@ -56,6 +61,6 @@ public interface CalcCore {
     // 追溯转移路径
     Pair<Double, Double> tracebackLcss(double spaceDis, Vector<TrajPoint> a,Vector<TrajPoint> b);
     Pair<Double, Double> tracebackFrechet(double spaceDis,Vector<TrajPoint>a, Vector<TrajPoint>b);
-    Pair<Double, Double> tracebackDTW(double spaceDis,Vector<TrajPoint> a, Vector<TrajPoint> b);
+    Pair<Double, Double> tracebackDTW(double spaceDis,Vector<TrajPoint> a, Vector<TrajPoint> b);*/
 
 }
