@@ -12,6 +12,13 @@ public class TrajPoint {
     // 时间
     int time;
 
+    public TrajPoint(int id, int lng, int lat, int time) {
+        this.id = id;
+        this.lng = lng;
+        this.lat = lat;
+        this.time = time;
+    }
+
     public TrajPoint(int _lng, int _lat) {
         lng = _lng;
         lat = _lat;

@@ -42,7 +42,15 @@ public class TrajectoryManagerImpl implements TrajectoryManager {
 
     @Override
     public int addTrajectory(Vector<TrajPoint> traj) {
-        return 0;
+        int id = trajs.size();
+        trajs.add(new Vector<TrajPoint>());
+        //trajs.push_back(Trajectory());
+        TrajPoint pt;
+        for (TrajPoint trajPoint:traj){
+            trajPoint.setId(id);
+            trajs.get(id).add(trajPoint);
+        }
+        return id;
     }
 
     private void freeMemory() {

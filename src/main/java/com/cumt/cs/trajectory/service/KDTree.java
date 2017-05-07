@@ -25,10 +25,10 @@ public interface KDTree {
     Set<Integer> findKNN(int lng, int lat, int k);
 
 
-    // 带回溯的二分搜索KD树
+  /*  // 带回溯的二分搜索KD树
     void bsearchKDTree(int lng, int lat, int k, KDNode root, int d, PriorityQueue<Pair<Double, Integer>> que, Stack<Pair<KDNode, Integer> > sta);
     // 递归构建KD树
     KDNode buildKDTree(int l, int r, int d);
     // 释放内存
-    void freeMemory();
+    void freeMemory();*/
 }
