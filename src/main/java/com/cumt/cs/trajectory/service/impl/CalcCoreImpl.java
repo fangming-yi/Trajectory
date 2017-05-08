@@ -9,12 +9,14 @@ import com.cumt.cs.trajectory.service.KDTree;
 import com.cumt.cs.trajectory.service.TrajectoryManager;
 import com.google.common.collect.Sets;
 import javafx.util.Pair;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 /**
  * Created by fangming.yi on 2017/5/3.
  */
+@Service
 public class CalcCoreImpl implements CalcCore {
 
     /*typedef Vector<TrajPoint> Trajectory;

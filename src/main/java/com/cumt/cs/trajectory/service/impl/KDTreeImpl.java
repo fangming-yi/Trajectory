@@ -5,12 +5,14 @@ import com.cumt.cs.trajectory.model.common.TrajPoint;
 import com.cumt.cs.trajectory.model.enums.TrajPointDimension;
 import com.cumt.cs.trajectory.service.KDTree;
 import javafx.util.Pair;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 /**
  * Created by fangming.yi on 2017/5/7.
  */
+@Service
 public class KDTreeImpl implements KDTree {
     private KDNode[] nodes = null;
     private KDNode root = null;
