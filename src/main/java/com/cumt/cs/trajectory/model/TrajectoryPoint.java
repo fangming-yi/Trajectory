@@ -9,23 +9,23 @@ public class TrajectoryPoint {
     private int id;
     private double longitude;
     private double latitude;
-    private Date time;
+    private Date generateTime;
 
     public TrajectoryPoint(){
 
     }
 
-    public TrajectoryPoint(double longitude, double latitude, Date time) {
+    public TrajectoryPoint(double longitude, double latitude, Date generateTime) {
         this.longitude = longitude;
         this.latitude = latitude;
-        this.time = time;
+        this.generateTime = generateTime;
     }
 
-    public TrajectoryPoint(int id, double longitude, double latitude, Date time) {
+    public TrajectoryPoint(int id, double longitude, double latitude, Date generateTime) {
         this.id = id;
         this.longitude = longitude;
         this.latitude = latitude;
-        this.time = time;
+        this.generateTime = generateTime;
     }
 
     public int getId() {
@@ -52,11 +52,11 @@ public class TrajectoryPoint {
         this.latitude = latitude;
     }
 
-    public Date getTime() {
-        return time;
+    public Date getGenerateTime() {
+        return generateTime;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setGenerateTime(Date generateTime) {
+        this.generateTime = generateTime;
     }
 }

@@ -1,8 +1,10 @@
 package com.cumt.cs.trajectory.service.impl;
 
+import com.cumt.cs.trajectory.dao.TrajectoryPointDao;
 import com.cumt.cs.trajectory.model.TrajectoryPoint;
 import com.cumt.cs.trajectory.model.common.TrajPoint;
 import com.cumt.cs.trajectory.service.TrajectoryManager;
+import com.google.common.base.Preconditions;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import org.joda.time.format.DateTimeFormat;
@@ -10,8 +12,10 @@ import org.joda.time.format.DateTimeFormatter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -30,6 +34,9 @@ public class TrajectoryManagerImpl implements TrajectoryManager {
     private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy/MM/dd HH:mm:ss");
 
     private Vector<Vector<TrajPoint>> trajs = new Vector<Vector<TrajPoint>>();
+
+    @Resource
+    private TrajectoryPointDao trajectoryPointDao;
 
     @Override
     public Vector<TrajPoint> getTrajectory(int id) {
@@ -80,13 +87,13 @@ public class TrajectoryManagerImpl implements TrajectoryManager {
         for (MultipartFile multipartFile:multipartFiles){
             try {
                 List<TrajectoryPoint> trajectoryPointList = parseFile(multipartFile);
-                saveTrajectoriyPointsToDB(trajectoryPointList);
+                saveTrajectoriyPointListToDB(trajectoryPointList);
             } catch (IOException e) {
                 LOGGER.error("解析文件异常");
                 throw e;
             }
         }
-        return false;
+        return true;
     }
 
     private List<TrajectoryPoint> parseFile(MultipartFile file) throws IOException {
@@ -127,8 +134,10 @@ public class TrajectoryManagerImpl implements TrajectoryManager {
         return resultList;
     }
 
-    public int saveTrajectoriyPointsToDB(List<TrajectoryPoint> trajectoryPointList){
-        return 0;
+    @Transactional
+    private int saveTrajectoriyPointListToDB(List<TrajectoryPoint> trajectoryPointList){
+        Preconditions.checkArgument(trajectoryPointList!=null&&trajectoryPointList.size()>0,"轨迹点列表不能为空");
+        return trajectoryPointDao.insertTrajectoryPoints(trajectoryPointList);
     }
 
     private void freeMemory() {

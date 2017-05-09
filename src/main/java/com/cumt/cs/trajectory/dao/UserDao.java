@@ -1,10 +1,12 @@
 package com.cumt.cs.trajectory.dao;
 
 import com.cumt.cs.trajectory.model.User;
+import org.springframework.stereotype.Repository;
 
 /**
  * Created by fangming.yi on 2017/5/8.
  */
+@Repository
 public interface UserDao {
 
     int insertUser(User user);
