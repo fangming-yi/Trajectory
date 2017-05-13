@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.cumt.cs.trajectory.dao.DataSetDao">
+    <resultMap id="DataSetMap" type="DataSet" autoMapping="true">
+        <id column="id" property="id"/>
+        <result column="set_name" property="setName"/>
+        <result column="set_size" property="setSize"/>
+        <result column="creator_id" property="creatorId"/>
+        <result column="status" property="status"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <sql id="ALL_COLUMN_LIST" >
+        id,set_name,set_size,creator_id,status,create_time
+    </sql>
+
+    <insert id="insertDataSet" parameterType="DataSet" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO data_set(set_name,set_size,creator_id)
+        VALUES (#{setName},#{setSize},#{creatorId})
+    </insert>
+
+    <delete id="deleteDataSet" parameterType="int">
+        DELETE FROM data_set WHERE id=#{id}
+    </delete>
+
+    <update id="updateDataSet" parameterType="DataSet">
+        UPDATE data_set
+        <set>
+            <if test="setName!=null">set_name=#{setName},</if>
+            <if test="setSize!=null">set_size=#{setSize},</if>
+            <if test="creatorId!=null">creator_id=#{creatorId},</if>
+            <if test="status==0||status==1">status=#{status},</if>
+        </set>
+    </update>
+
+    <select id="selectDataSetById" parameterType="int" resultType="DataSet">
+        SELECT
+        <include refid="ALL_COLUMN_LIST"/>
+        FROM data_set
+        WHERE id=#{id}
+    </select>
+
+    <select id="selectDataSetByStatus" parameterType="int" resultType="DataSet" resultMap="DataSetMap">
+        SELECT
+        <include refid="ALL_COLUMN_LIST"/>
+        FROM data_set
+        WHERE status=#{status}
+    </select>
+
+    <select id="selectDataSetByUserId" parameterType="java.lang.String" resultType="DataSet" resultMap="DataSetMap">
+        SELECT
+        <include refid="ALL_COLUMN_LIST"/>
+        FROM data_set
+        WHERE creator_id=#{userId}
+    </select>
+</mapper>

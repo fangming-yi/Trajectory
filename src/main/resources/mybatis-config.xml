@@ -14,6 +14,7 @@
         <typeAlias type="com.cumt.cs.trajectory.model.User" alias="User"/>
         <typeAlias type="com.cumt.cs.trajectory.model.TrajectoryPoint" alias="TrajectoryPoint"/>
         <typeAlias type="com.cumt.cs.trajectory.model.Admin" alias="Admin"/>
+        <typeAlias type="com.cumt.cs.trajectory.model.DataSet" alias="DataSet"/>
     </typeAliases>
 
     <plugins>
@@ -22,7 +23,7 @@
     </plugins>
 
     <!--UserDao.xml装载进来 同等于把“dao”的实现装载进来 -->
-    <mappers>
+    <!--<mappers>
         <mapper resource="mappers/TrajectoryPoint.xml"/>
-    </mappers>
+    </mappers>-->
 </configuration>
