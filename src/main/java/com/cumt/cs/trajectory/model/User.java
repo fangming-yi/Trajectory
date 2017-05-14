@@ -12,6 +12,7 @@ public class User {
     private int gender;
     private String phone;
     private String email;
+    private int loginNum;
     private Date lastLoginTime;
     private boolean isAdmin;
 
@@ -19,14 +20,16 @@ public class User {
 
     }
 
-    public User(int id, String userId, String username, int gender, String phone, String email, Date lastLoginTime) {
+    public User(int id, String userId, String username, int gender, String phone, String email, int loginNum, Date lastLoginTime, boolean isAdmin) {
         this.id = id;
         this.userId = userId;
         this.username = username;
         this.gender = gender;
         this.phone = phone;
         this.email = email;
+        this.loginNum = loginNum;
         this.lastLoginTime = lastLoginTime;
+        this.isAdmin = isAdmin;
     }
 
     public int getId() {
@@ -75,6 +78,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getLoginNum() {
+        return loginNum;
+    }
+
+    public void setLoginNum(int loginNum) {
+        this.loginNum = loginNum;
     }
 
     public Date getLastLoginTime() {

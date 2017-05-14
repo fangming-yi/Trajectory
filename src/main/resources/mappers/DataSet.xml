@@ -32,6 +32,7 @@
             <if test="creatorId!=null">creator_id=#{creatorId},</if>
             <if test="status==0||status==1">status=#{status},</if>
         </set>
+        WHERE id=#{id}
     </update>
 
     <select id="selectDataSetById" parameterType="int" resultType="DataSet">

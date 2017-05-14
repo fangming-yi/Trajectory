@@ -7,7 +7,68 @@
         <result column="user_id" property="user_id"/>
     </resultMap>
 
-    <sql id="ALL_COLUMN_LIST" >
+    <sql id="ALL_COLUMN_LIST">
         id,user_id
     </sql>
+
+    <insert id="insertAdmin" parameterType="Admin" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO admin
+        VALUES (#{userId})
+    </insert>
+
+    <delete id="deleteAdmin" parameterType="int">
+        UPDATE admin
+        SET status=0
+        WHERE id=#{id}
+    </delete>
+
+   <!-- <update id="updateAdmin" parameterType="Admin">
+        UPDATE admin
+        <set>
+            <if test="userId!=null">user_id=#{userId}</if>
+        </set>
+    </update>-->
+    
+    <select id="selectAdminById" parameterType="int" resultType="User">
+        <![CDATA[
+        SELECT
+          a.id AS id,
+          a.user_id AS userId,
+          u.username AS username,
+          u.gender AS gender,
+          u.phone AS phone,
+          u.email AS email,
+          u.last_login_time AS lastLoginTime,
+          TRUE AS isAdmin
+        FROM
+          admin AS a 
+          LEFT JOIN user AS u 
+          ON (a.user_id=u.user_id AND a.status=1)   
+        ]]>
+        <where>
+            AND a.id=#{id}
+        </where>
+    </select>
+    
+    <select id="selectAdminByUserId" parameterType="java.lang.String" resultType="User">
+        <![CDATA[
+        SELECT
+          a.id AS id,
+          a.user_id AS userId,
+          u.username AS username,
+          u.gender AS gender,
+          u.phone AS phone,
+          u.email AS email,
+          u.last_login_time AS lastLoginTime,
+          TRUE AS isAdmin
+        FROM
+          admin AS a 
+          LEFT JOIN user AS u 
+          ON (a.user_id=u.user_id AND a.status=1)   
+        ]]>
+        <where>
+            AND a.user_id=#{userId}
+        </where>
+    </select>
+
 </mapper>
